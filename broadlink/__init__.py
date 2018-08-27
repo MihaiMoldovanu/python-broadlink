@@ -557,7 +557,8 @@ class rm(device):
     err = response[0x22] | (response[0x23] << 8)
     if err == 0:
       payload = self.decrypt(bytes(response[0x38:]))
-      if payload[0x04] == 1:
+      bb = bytearray(payload)
+      if bb[0x04] == 1:
           return True
     return False
 
@@ -568,7 +569,8 @@ class rm(device):
     err = response[0x22] | (response[0x23] << 8)
     if err == 0:
       payload = self.decrypt(bytes(response[0x38:]))
-      if payload[0x04] == 1:
+      bb = bytearray(payload)
+      if bb[0x04] == 1:
           return True
     return False
 
